@@ -20,7 +20,8 @@ defmodule TicTac.MatchMaker do
     {:reply, game_id, {registry, game_id}}
   end
 
-  def handle_call(:find_match, _from, {registry, server_name}) do
-    {:reply, server_name, {registry, :empty}}
+  def handle_call(:find_match, _from, {registry, game_id}) do
+    GameServer.start_game(registry, game_id)
+    {:reply, game_id, {registry, :empty}}
   end
 end

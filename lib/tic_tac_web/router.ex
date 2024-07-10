@@ -14,7 +14,7 @@ defmodule TicTacWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    get "/play", PageController, :play
+    post "/play", PageController, :play
     live "/game/:game_id", GameLive, as: :game
   end
 
